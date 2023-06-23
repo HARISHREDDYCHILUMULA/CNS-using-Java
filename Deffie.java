@@ -41,3 +41,53 @@ System.out.println("Keys are same");
 }
 }
 }
+/*
+
+#include <stdio.h>
+#include <math.h>
+
+// Function to calculate the power modulo of a number
+int powerModulo(int base, int exponent, int modulus) {
+    long long result = 1;
+    while (exponent > 0) {
+        if (exponent % 2 == 1) {
+            result = (result * base) % modulus;
+        }
+        base = (base * base) % modulus;
+        exponent = exponent / 2;
+    }
+    return (int)result;
+}
+
+int main() {
+    int p, g, a, b;
+
+    printf("Enter the prime number (p): ");
+    scanf("%d", &p);
+
+    printf("Enter the primitive root (g): ");
+    scanf("%d", &g);
+
+    printf("Enter the private key for person A (a): ");
+    scanf("%d", &a);
+
+    printf("Enter the private key for person B (b): ");
+    scanf("%d", &b);
+
+    // Calculate public keys for person A and B
+    int A = powerModulo(g, a, p);
+    int B = powerModulo(g, b, p);
+
+    // Calculate the shared secret key for person A and B
+    int secretKeyA = powerModulo(B, a, p);
+    int secretKeyB = powerModulo(A, b, p);
+
+    printf("Public key for person A: %d\n", A);
+    printf("Public key for person B: %d\n", B);
+    printf("Shared secret key for person A: %d\n", secretKeyA);
+    printf("Shared secret key for person B: %d\n", secretKeyB);
+
+    return 0;
+  }
+
+*/
